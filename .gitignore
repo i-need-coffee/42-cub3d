@@ -1,0 +1,13 @@
+# Cub3D build outputs
+/cub3d
+/obj/
+/libft/obj/
+*.o
+*.a
+core
+*.core
+
+# Editor and OS temporary files
+*.swp
+*~
+.DS_Store
