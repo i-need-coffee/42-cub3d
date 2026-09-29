@@ -9,7 +9,8 @@ CFLAGS			= -Wall -Wextra -Werror -g -Iinclude -Ilibft/include -I$(MLX_DIR)
 
 SRC_DIR			= src
 SRCS			= \
-	$(SRC_DIR)/main.c
+	$(SRC_DIR)/main.c \
+	$(SRC_DIR)/utils/error.c
 
 OBJ_DIR			= obj
 OBJS			= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
@@ -21,7 +22,7 @@ LIBFT			= $(LIBFT_DIR)/libft.a
 MLX_DIR			= minilibx-linux
 MLX				= $(MLX_DIR)/libmlx.a
 MLX_FLAGS		= -lXext -lX11 -lm -lbsd
-MLX_CFLAGS	= -O3 -std=gnu17 -I/usr/include -I..
+MLX_CFLAGS		= -O3 -std=gnu17 -I/usr/include -I..
 
 # **************************************************************************** #
 
@@ -43,6 +44,7 @@ $(OBJ_DIRS):
 	@mkdir -p $@
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIRS)
+	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:

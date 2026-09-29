@@ -6,7 +6,7 @@
 /*   By: sjolliet <sjolliet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 12:00:55 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/09/29 15:38:21 by sjolliet         ###   ########.fr       */
+/*   Updated: 2026/09/29 17:21:30 by sjolliet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <X11/keysym.h>
 # include <libft.h>
 # include <mlx.h>
+# include <errors.h>
 
 /*
 ** ================================
@@ -42,5 +43,8 @@ typedef struct s_game
 **			FUNCTIONS
 ** ================================
 */
+
+void	print_error(char *err_msg);
+void	error_exit(char *err_msg);
 
 #endif
