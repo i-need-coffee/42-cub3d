@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   errors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sjolliet <sjolliet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/29 15:37:44 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/09/29 17:30:49 by sjolliet         ###   ########.fr       */
+/*   Created: 2026/09/29 17:09:22 by sjolliet          #+#    #+#             */
+/*   Updated: 2026/09/29 17:30:00 by sjolliet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#ifndef ERRORS_H
+# define ERRORS_H
 
-int	main(int argc, char **argv)
-{
-	(void)argv;
-	if (argc != 2)
-		error_exit(ERR_ARGS);
-	return (EXIT_SUCCESS);
-}
+# define ERR_ARGS	"Program should have one argument (map .cub)"
+# define ERR_ALLOC	"Cannot allocate memory"
+
+#endif
