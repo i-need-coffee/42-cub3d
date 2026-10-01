@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors.h                                           :+:      :+:    :+:   */
+/*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sjolliet <sjolliet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/29 17:09:22 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/10/01 16:24:24 by sjolliet         ###   ########.fr       */
+/*   Created: 2026/10/01 15:53:52 by sjolliet          #+#    #+#             */
+/*   Updated: 2026/10/01 17:23:52 by sjolliet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERRORS_H
-# define ERRORS_H
+#include "cub3d.h"
 
-# define ERR_ARGS	"Program should have one argument (map .cub)"
-# define ERR_ALLOC	"Cannot allocate memory"
-# define HID_FILE	"Parameter passed is an hidden file"
-# define NOT_CUB	"Parameter passed is not a .cub file"
-# define NOT_OPEN	"Map file could not be opened (check file location and permissions)"
+void	parse_map(char *file)
+{
+	char	*ext;
+	int		fd;
 
-#endif
+	if ((file[0] == '.' && file[1] != '/')
+		|| (ft_strrchr(file, '/') && ft_strrchr(file, '/')[1] == '.'))
+		error_exit(file, HID_FILE);
+	ext = ft_strrchr(file, '.');
+	if (!ext || ft_strncmp(ext, ".cub", 5) != 0)
+		error_exit(file, NOT_CUB);
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
+		error_exit(file, strerror(errno));
+	close(fd);
+}

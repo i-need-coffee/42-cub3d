@@ -6,7 +6,7 @@
 /*   By: sjolliet <sjolliet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 12:00:55 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/09/29 17:21:30 by sjolliet         ###   ########.fr       */
+/*   Updated: 2026/10/01 16:26:32 by sjolliet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@
 # include <libft.h>
 # include <mlx.h>
 # include <errors.h>
+# include <fcntl.h>
+# include <errno.h>
+# include <string.h>
 
 /*
 ** ================================
@@ -31,11 +34,22 @@
 ** ================================
 */
 
-typedef struct s_game
+typedef struct s_map
 {
 	char	**map;
+	char	*no_text;
+	char	*so_text;
+	char	*we_text;
+	char	*ea_text;
+	int		*f_color;
+	int		*c_color;
+}	t_map;
+
+typedef struct s_game
+{
 	void	*mlx;
 	void	*mlx_win;
+	t_map	*map;
 }	t_game;
 
 /*
@@ -44,7 +58,8 @@ typedef struct s_game
 ** ================================
 */
 
-void	print_error(char *err_msg);
-void	error_exit(char *err_msg);
+void	print_error(char *err_location, char *err_msg);
+void	error_exit(char *err_location, char *err_msg);
+void	parse_map(char *file);
 
 #endif
