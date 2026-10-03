@@ -6,7 +6,7 @@
 /*   By: sjolliet <sjolliet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 15:37:44 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/10/01 16:27:29 by sjolliet         ###   ########.fr       */
+/*   Updated: 2026/10/03 14:20:53 by sjolliet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		error_exit("cub3d", ERR_ARGS);
 	ft_bzero(&game, sizeof(game));
-	parse_map(argv[1]);
+	parse_map(&game, argv[1]);
 	return (EXIT_SUCCESS);
 }

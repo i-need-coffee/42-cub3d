@@ -6,7 +6,7 @@
 /*   By: sjolliet <sjolliet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 12:00:55 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/10/03 11:36:48 by sjolliet         ###   ########.fr       */
+/*   Updated: 2026/10/03 14:41:44 by sjolliet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # include <fcntl.h>
 # include <errno.h>
 # include <string.h>
+# include <stdbool.h>
 
 /*
 ** ================================
@@ -60,6 +61,6 @@ typedef struct s_game
 
 void	print_error(char *err_location, char *err_msg);
 void	error_exit(char *err_location, char *err_msg);
-void	parse_map(char *file);
+void	parse_map(t_game *game, char *file);
 
 #endif
