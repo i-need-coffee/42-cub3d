@@ -6,7 +6,7 @@
 /*   By: sjolliet <sjolliet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 17:09:22 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/10/01 16:24:24 by sjolliet         ###   ########.fr       */
+/*   Updated: 2026/10/03 11:55:51 by sjolliet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,6 @@
 # define ERR_ALLOC	"Cannot allocate memory"
 # define HID_FILE	"Parameter passed is an hidden file"
 # define NOT_CUB	"Parameter passed is not a .cub file"
-# define NOT_OPEN	"Map file could not be opened (check file location and permissions)"
+# define IS_DIR		"Is a directory"
 
 #endif
