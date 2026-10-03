@@ -6,7 +6,7 @@
 /*   By: sjolliet <sjolliet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 12:00:55 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/10/03 14:41:44 by sjolliet         ###   ########.fr       */
+/*   Updated: 2026/10/03 16:01:03 by sjolliet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,10 @@ typedef struct s_game
 ** ================================
 */
 
-void	print_error(char *err_location, char *err_msg);
-void	error_exit(char *err_location, char *err_msg);
+void	error_exit(t_game *game, char *err_location, char *err_msg);
 void	parse_map(t_game *game, char *file);
+void	ft_clean_exit(t_game *game, int code);
+void	print_error(char *err_location, char *err_msg);
+int		ft_mlx_window(t_game *game);
 
 #endif

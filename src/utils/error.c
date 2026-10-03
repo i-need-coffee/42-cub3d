@@ -6,7 +6,7 @@
 /*   By: sjolliet <sjolliet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 17:14:07 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/10/01 16:31:03 by sjolliet         ###   ########.fr       */
+/*   Updated: 2026/10/03 15:55:59 by sjolliet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	print_error(char *err_location, char *err_msg)
 	write(1, "\n", 1);
 }
 
-void	error_exit(char *err_location, char *err_msg)
+void	error_exit(t_game *game, char *err_location, char *err_msg)
 {
 	print_error(err_location, err_msg);
-	exit(EXIT_FAILURE);
+	ft_clean_exit(game, 1);
 }
