@@ -6,7 +6,7 @@
 /*   By: sjolliet <sjolliet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 17:09:22 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/10/03 15:57:21 by sjolliet         ###   ########.fr       */
+/*   Updated: 2026/10/03 17:26:14 by sjolliet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,8 @@
 # define IS_EMPTY	"Map is empty"
 # define MLX_INIT	"mlx_init failed"
 # define MLX_WIN	"Window creation failed"
+# define WRG_PARAM	"Map parameter is not formatted correctly"
+# define NOT_PARAM	"Map parameter does not exist"
+# define DBL_PARAM	"Parameter already exists"
 
 #endif

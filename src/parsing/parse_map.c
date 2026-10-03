@@ -6,7 +6,7 @@
 /*   By: sjolliet <sjolliet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/01 15:53:52 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/10/03 16:03:55 by sjolliet         ###   ########.fr       */
+/*   Updated: 2026/10/03 17:16:04 by sjolliet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	check_file(t_game *game, char *file);
 static bool	set_map(t_map *map, int fd);
-static bool	is_empty(char *line);
+static bool	set_map_param(t_map *map, char *line);
 
 void	parse_map(t_game *game, char *file)
 {
@@ -58,14 +58,20 @@ static void	check_file(t_game *game, char *file)
 static bool	set_map(t_map *map, int fd)
 {
 	char	*line;
+	int		nb_params;
 
+	nb_params = 0;
 	line = get_next_line(fd);
 	if (!line)
 		return (print_error("map", IS_EMPTY), false);
 	while (line != NULL)
 	{
-		if (is_empty(line))
-			printf("is empty");
+		if (!is_line_empty(line) && nb_params != 5)
+		{
+			if (!set_map_param(map, line))
+				return (free(line), false);
+			nb_params++;
+		}
 		free(line);
 		line = get_next_line(fd);
 	}
@@ -74,16 +80,22 @@ static bool	set_map(t_map *map, int fd)
 	return (true);
 }
 
-static bool	is_empty(char *line)
+static bool	set_map_param(t_map *map, char *line)
 {
-	int	i;
+	char	**param;
 
-	i = 0;
-	while (line[i])
+	param = ft_split(line, ' ');
+	if (!param)
+		return (print_error("set_map_param", ERR_ALLOC), false);
+	if (param[2] != NULL)
+		return (free_char_tab(param), print_error(line, WRG_PARAM), false);
+	if (ft_strcmp(param[0], "NO") == 0 || ft_strcmp(param[0], "SO") == 0
+		|| ft_strcmp(param[0], "WE") == 0 || ft_strcmp(param[0], "EA") == 0)
 	{
-		if (!ft_isspace(line[i]) && line[i] != '\n')
-			return (false);
-		i++;
+		if (!set_map_texture(map, param))
+			return (free_char_tab(param), false);
 	}
+	else
+		return (free_char_tab(param), print_error(line, NOT_PARAM), false);
 	return (true);
 }
