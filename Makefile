@@ -10,7 +10,9 @@ CFLAGS			= -Wall -Wextra -Werror -g -Iinclude -Ilibft/include -I$(MLX_DIR)
 SRC_DIR			= src
 SRCS			= \
 	$(SRC_DIR)/main.c \
-	$(SRC_DIR)/utils/error.c
+	$(SRC_DIR)/utils/cleanup.c \
+	$(SRC_DIR)/utils/error.c \
+	$(SRC_DIR)/init/window.c
 
 OBJ_DIR			= obj
 OBJS			= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)

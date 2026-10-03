@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omiskiny <omiskiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/29 17:14:07 by username          #+#    #+#             */
-/*   Updated: 2026/10/03 15:29:53 by omiskiny         ###   ########.fr       */
+/*   Created: 2026/10/03 15:10:57 by username          #+#    #+#             */
+/*   Updated: 2026/10/03 15:31:14 by omiskiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	print_error(char *err_msg)
+int	ft_mlx_window(t_game *game)
 {
-	write(2, "\033[31mError\033[0m\n", 15);
-	write(2, err_msg, ft_strlen(err_msg));
-	write(1, "\n", 1);
-}
-
-void	error_exit(t_game *game, char *err_msg)
-{
-	print_error(err_msg);
-	ft_clean_exit(game, 1);
+	game->mlx = mlx_init();
+	if (game->mlx == NULL)
+		error_exit(game, ERR_MLX_INIT);
+	game->mlx_win = mlx_new_window(game->mlx, 800, 600, "cub3d - test window");
+	if (game->mlx_win == NULL)
+		error_exit(game, ERR_MLX_WIN);
+	return (0);
 }

@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omiskiny <omiskiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/29 17:14:07 by username          #+#    #+#             */
-/*   Updated: 2026/10/03 15:29:53 by omiskiny         ###   ########.fr       */
+/*   Created: 2026/10/03 12:37:20 by username          #+#    #+#             */
+/*   Updated: 2026/10/03 15:29:45 by omiskiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	print_error(char *err_msg)
+void	ft_clean_exit(t_game *game, int code)
 {
-	write(2, "\033[31mError\033[0m\n", 15);
-	write(2, err_msg, ft_strlen(err_msg));
-	write(1, "\n", 1);
-}
-
-void	error_exit(t_game *game, char *err_msg)
-{
-	print_error(err_msg);
-	ft_clean_exit(game, 1);
+	if (game != NULL)
+	{
+		if (game->mlx_win != NULL)
+		{
+			mlx_destroy_window(game->mlx, game->mlx_win);
+		}
+		if (game->mlx != NULL)
+		{
+			mlx_destroy_display(game->mlx);
+			free(game->mlx);
+		}
+		free(game);
+	}
+	exit(code);
 }

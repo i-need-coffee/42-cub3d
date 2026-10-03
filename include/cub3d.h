@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sjolliet <sjolliet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: omiskiny <omiskiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 12:00:55 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/09/29 17:21:30 by sjolliet         ###   ########.fr       */
+/*   Updated: 2026/10/03 15:17:32 by omiskiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,9 @@ typedef struct s_game
 **			FUNCTIONS
 ** ================================
 */
-
+void	ft_clean_exit(t_game *game, int code);
 void	print_error(char *err_msg);
-void	error_exit(char *err_msg);
+void	error_exit(t_game *game, char *err_msg);
+int		ft_mlx_window(t_game *game);
 
 #endif
