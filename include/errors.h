@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sjolliet <sjolliet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sjolliet <sjolliet@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 17:09:22 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/10/03 17:26:14 by sjolliet         ###   ########.fr       */
+/*   Updated: 2026/10/04 20:33:25 by sjolliet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # define IS_EMPTY	"Map is empty"
 # define MLX_INIT	"mlx_init failed"
 # define MLX_WIN	"Window creation failed"
-# define WRG_PARAM	"Map parameter is not formatted correctly"
-# define NOT_PARAM	"Map parameter does not exist"
-# define DBL_PARAM	"Parameter already exists"
+# define WRG_PARAM	"Parameter is not formatted correctly"
+# define NOT_PARAM	"Parameter does not exist"
+# define DBL_PARAM	"Parameter specified more than once"
 
 #endif

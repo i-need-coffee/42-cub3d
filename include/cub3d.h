@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sjolliet <sjolliet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sjolliet <sjolliet@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 12:00:55 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/10/03 16:20:37 by sjolliet         ###   ########.fr       */
+/*   Updated: 2026/10/04 18:43:52 by sjolliet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 
 typedef struct s_map
 {
-	char	**map;
+	char	**grid;
 	char	*no_text;
 	char	*so_text;
 	char	*we_text;
@@ -65,5 +65,7 @@ void	ft_clean_exit(t_game *game, int code);
 void	print_error(char *err_location, char *err_msg);
 int		ft_mlx_window(t_game *game);
 bool	is_line_empty(char *line);
+void	ft_clean(t_game *game);
+bool	set_map_texture(t_map *map, char **param);
 
 #endif
