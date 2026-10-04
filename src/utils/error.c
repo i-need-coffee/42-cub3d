@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sjolliet <sjolliet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sjolliet <sjolliet@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 17:14:07 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/10/03 15:55:59 by sjolliet         ###   ########.fr       */
+/*   Updated: 2026/10/04 18:17:18 by sjolliet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ void	print_error(char *err_location, char *err_msg)
 {
 	write(2, "\033[31mError\033[0m\n", 15);
 	write(2, err_location, ft_strlen(err_location));
-	write(1, ": ", 2);
+	write(2, ": ", 2);
 	write(2, err_msg, ft_strlen(err_msg));
-	write(1, "\n", 1);
+	write(2, "\n", 1);
 }
 
 void	error_exit(t_game *game, char *err_location, char *err_msg)
 {
 	print_error(err_location, err_msg);
-	ft_clean_exit(game, 1);
+	ft_clean_exit(game, EXIT_FAILURE);
 }
