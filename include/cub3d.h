@@ -6,7 +6,7 @@
 /*   By: sjolliet <sjolliet@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 12:00:55 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/10/04 18:43:52 by sjolliet         ###   ########.fr       */
+/*   Updated: 2026/10/05 00:12:04 by sjolliet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,6 @@ int		ft_mlx_window(t_game *game);
 bool	is_line_empty(char *line);
 void	ft_clean(t_game *game);
 bool	set_map_texture(t_map *map, char **param);
+bool	set_map_color(t_map *map, char **param);
 
 #endif

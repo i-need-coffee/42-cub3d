@@ -15,7 +15,8 @@ SRCS			= \
 	$(SRC_DIR)/utils/error.c \
 	$(SRC_DIR)/init/window.c \
 	$(SRC_DIR)/parsing/set_map_texture.c \
-	$(SRC_DIR)/parsing/utils.c
+	$(SRC_DIR)/parsing/utils.c \
+	$(SRC_DIR)/parsing/set_map_color.c
 
 OBJ_DIR			= obj
 OBJS			= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)

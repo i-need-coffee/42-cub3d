@@ -6,7 +6,7 @@
 /*   By: sjolliet <sjolliet@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/03 12:37:20 by username          #+#    #+#             */
-/*   Updated: 2026/10/04 18:39:55 by sjolliet         ###   ########.fr       */
+/*   Updated: 2026/10/05 00:15:15 by sjolliet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,9 @@ static void	free_map(t_map *map)
 		free(map->we_text);
 	if (map->ea_text != NULL)
 		free(map->ea_text);
+	if (map->f_color != NULL)
+		free(map->f_color);
+	if (map->c_color != NULL)
+		free(map->c_color);
 	free(map);
 }

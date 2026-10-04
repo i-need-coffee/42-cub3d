@@ -6,7 +6,7 @@
 /*   By: sjolliet <sjolliet@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/01 15:53:52 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/10/04 20:37:13 by sjolliet         ###   ########.fr       */
+/*   Updated: 2026/10/05 00:55:45 by sjolliet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	parse_map(t_game *game, char *file)
 		exit(EXIT_FAILURE);
 	}
 	close(fd);
+	ft_clean_exit(game, 0);
 }
 
 static void	check_file(t_game *game, char *file)
@@ -67,7 +68,7 @@ static bool	set_map(t_map *map, int fd)
 		return (print_error("Map", IS_EMPTY), false);
 	while (line != NULL)
 	{
-		if (!is_line_empty(line) && nb_params != 6)
+		if (!is_line_empty(line) && nb_params < 6)
 		{
 			if (!set_map_param(map, line))
 				return (free(line), false);
@@ -85,6 +86,10 @@ static bool	set_map(t_map *map, int fd)
 		printf("we_text: %s\n", map->we_text);
 	if (map->ea_text)
 		printf("ea_text: %s\n", map->ea_text);
+	if (map->f_color)
+		printf("[f_color] r:%d, g:%d, b:%d\n", map->f_color[0], map->f_color[1], map->f_color[2]);
+	if (map->c_color)
+		printf("[c_color] r:%d, g:%d, b:%d\n", map->c_color[0], map->c_color[1], map->c_color[2]);
 	return (true);
 }
 
@@ -101,6 +106,11 @@ static bool	set_map_param(t_map *map, char *line)
 		|| ft_strcmp(param[0], "WE") == 0 || ft_strcmp(param[0], "EA") == 0)
 	{
 		if (!set_map_texture(map, param))
+			return (free_char_tab(param), false);
+	}
+	else if (ft_strcmp(param[0], "F") == 0 || ft_strcmp(param[0], "C") == 0)
+	{
+		if (!set_map_color(map, param))
 			return (free_char_tab(param), false);
 	}
 	else
