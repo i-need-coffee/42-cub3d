@@ -10,9 +10,15 @@ CFLAGS			= -Wall -Wextra -Werror -g -Iinclude -Ilibft/include -I$(MLX_DIR)
 SRC_DIR			= src
 SRCS			= \
 	$(SRC_DIR)/main.c \
+	$(SRC_DIR)/parsing/parse_map.c \
 	$(SRC_DIR)/utils/cleanup.c \
 	$(SRC_DIR)/utils/error.c \
-	$(SRC_DIR)/init/window.c
+	$(SRC_DIR)/init/window.c \
+	$(SRC_DIR)/parsing/set_map_texture.c \
+	$(SRC_DIR)/parsing/set_map_grid.c \
+	$(SRC_DIR)/parsing/set_map_parameter.c \
+	$(SRC_DIR)/parsing/utils.c \
+	$(SRC_DIR)/parsing/set_map_color.c
 
 OBJ_DIR			= obj
 OBJS			= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)

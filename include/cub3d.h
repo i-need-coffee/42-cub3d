@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omiskiny <omiskiny@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sjolliet <sjolliet@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 12:00:55 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/10/03 15:17:32 by omiskiny         ###   ########.fr       */
+/*   Updated: 2026/10/05 10:16:46 by sjolliet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@
 # include <libft.h>
 # include <mlx.h>
 # include <errors.h>
+# include <fcntl.h>
+# include <errno.h>
+# include <string.h>
+# include <stdbool.h>
 
 /*
 ** ================================
@@ -31,11 +35,22 @@
 ** ================================
 */
 
+typedef struct s_map
+{
+	char	**grid;
+	char	*no_text;
+	char	*so_text;
+	char	*we_text;
+	char	*ea_text;
+	int		*f_color;
+	int		*c_color;
+}	t_map;
+
 typedef struct s_game
 {
-	char	**map;
 	void	*mlx;
 	void	*mlx_win;
+	t_map	*map;
 }	t_game;
 
 /*
@@ -43,9 +58,18 @@ typedef struct s_game
 **			FUNCTIONS
 ** ================================
 */
+
+void	error_exit(t_game *game, char *err_location, char *err_msg);
+void	parse_map(t_game *game, char *file);
 void	ft_clean_exit(t_game *game, int code);
-void	print_error(char *err_msg);
-void	error_exit(t_game *game, char *err_msg);
+void	print_error(char *err_location, char *err_msg);
 int		ft_mlx_window(t_game *game);
+bool	is_line_empty(char *line);
+void	ft_clean(t_game *game);
+bool	set_map_texture(t_map *map, char **param);
+bool	set_map_color(t_map *map, char **param);
+bool	set_map_grid(t_map *map, char *line);
+bool	set_map_parameter(t_map *map, char *line);
+char	*ft_strdup_no_newline(char *str);
 
 #endif

@@ -1,28 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sjolliet <sjolliet@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/29 15:37:44 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/10/05 23:01:38 by sjolliet         ###   ########.fr       */
+/*   Created: 2026/10/03 16:18:37 by sjolliet          #+#    #+#             */
+/*   Updated: 2026/10/05 10:18:13 by sjolliet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int argc, char **argv)
+bool	is_line_empty(char *line)
 {
-	t_game	*game;
+	int	i;
 
-	if (argc != 2)
-		error_exit(NULL, "cub3d", ERR_ARGS);
-	game = ft_calloc(sizeof(t_game), 1);
-	if (!game)
-		error_exit(NULL, "game creation", ERR_ALLOC);
-	parse_map(game, argv[1]);
-	ft_mlx_window(game);
-	mlx_loop(game->mlx);
-	return (EXIT_SUCCESS);
+	i = 0;
+	while (line[i])
+	{
+		if (!ft_isspace(line[i]) && line[i] != '\n')
+			return (false);
+		i++;
+	}
+	return (true);
+}
+
+char	*ft_strdup_no_newline(char *str)
+{
+	char	*clean_str;
+	size_t	len;
+
+	len = 0;
+	while (str[len] && str[len] != '\n')
+		len++;
+	clean_str = ft_substr(str, 0, len);
+	if (!clean_str)
+		return (NULL);
+	return (clean_str);
 }
