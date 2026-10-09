@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sjolliet <sjolliet@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*   By: omiskiny <omiskiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/01 15:53:52 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/10/05 22:37:00 by sjolliet         ###   ########.fr       */
+/*   Updated: 2026/10/09 10:39:21 by omiskiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@ void	parse_map(t_game *game, char *file)
 	if (fd == -1)
 		error_exit(game, file, strerror(errno));
 	if (!read_map_parameters(game->map, fd)
-		|| !read_map_grid(game->map, fd))
+		|| !read_map_grid(game->map, fd)
+		|| !check_valid_characters(game->map->grid)
+		|| !check_single_player(game->map->grid))
 	{
 		close(fd);
 		get_next_line(-1);

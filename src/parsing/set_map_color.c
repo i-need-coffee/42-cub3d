@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_map_color.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sjolliet <sjolliet@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*   By: omiskiny <omiskiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/04 20:42:23 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/10/05 00:51:57 by sjolliet         ###   ########.fr       */
+/*   Updated: 2026/10/09 11:47:28 by omiskiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,16 @@ bool	set_map_color(t_map *map, char **param)
 		return (free(color), free_char_tab(color_range),
 			print_error(param[0], WRG_PARAM), false);
 	if (ft_strcmp(param[0], "F") == 0)
-		map->f_color = color;
+	{
+		map->f_color = rgb(color[0], color[1], color[2]);
+		map->f_color_set = true;
+	}
 	else
-		map->c_color = color;
+	{
+		map->c_color = rgb(color[0], color[1], color[3]);
+		map->c_color_set = true;
+	}
+	free(color);
 	return (free_char_tab(color_range), true);
 }
 
@@ -45,8 +52,8 @@ static bool	valid_color_range(t_map *map, char **param, char **color_range)
 	if (!color_range[0] || !color_range[1]
 		|| !color_range[2] || color_range[3] != NULL)
 		return (print_error(param[0], WRG_PARAM), false);
-	if ((ft_strcmp(param[0], "F") == 0 && map->f_color != NULL)
-		|| (ft_strcmp(param[0], "C") == 0 && map->c_color != NULL))
+	if ((ft_strcmp(param[0], "F") == 0 && map->f_color_set == true)
+		|| (ft_strcmp(param[0], "C") == 0 && map->c_color_set == true))
 		return (print_error(param[0], DBL_PARAM), false);
 	return (true);
 }

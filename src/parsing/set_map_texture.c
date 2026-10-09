@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_map_texture.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sjolliet <sjolliet@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*   By: omiskiny <omiskiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/03 17:08:10 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/10/05 10:19:11 by sjolliet         ###   ########.fr       */
+/*   Updated: 2026/10/09 12:34:33 by omiskiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,12 @@ static bool	set_no_text(t_map *map, char *text)
 	map->no_text = ft_strdup_no_newline(text);
 	if (!map->no_text)
 		return (print_error("set_map_texture", ERR_ALLOC), false);
+	if (!check_texture_validity(map->no_text))
+	{
+		free(map->no_text);
+		map->no_text = NULL;
+		return (false);
+	}
 	return (true);
 }
 
@@ -59,6 +65,12 @@ static bool	set_so_text(t_map *map, char *text)
 	map->so_text = ft_strdup_no_newline(text);
 	if (!map->so_text)
 		return (print_error("set_map_texture", ERR_ALLOC), false);
+	if (!check_texture_validity(map->so_text))
+	{
+		free(map->no_text);
+		map->no_text = NULL;
+		return (false);
+	}
 	return (true);
 }
 
@@ -69,6 +81,12 @@ static bool	set_we_text(t_map *map, char *text)
 	map->we_text = ft_strdup_no_newline(text);
 	if (!map->we_text)
 		return (print_error("set_map_texture", ERR_ALLOC), false);
+	if (!check_texture_validity(map->we_text))
+	{
+		free(map->no_text);
+		map->no_text = NULL;
+		return (false);
+	}
 	return (true);
 }
 
@@ -79,5 +97,11 @@ static bool	set_ea_text(t_map *map, char *text)
 	map->ea_text = ft_strdup_no_newline(text);
 	if (!map->ea_text)
 		return (print_error("set_map_texture", ERR_ALLOC), false);
+	if (!check_texture_validity(map->ea_text))
+	{
+		free(map->no_text);
+		map->no_text = NULL;
+		return (false);
+	}
 	return (true);
 }

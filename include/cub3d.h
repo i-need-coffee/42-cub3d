@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sjolliet <sjolliet@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*   By: omiskiny <omiskiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 12:00:55 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/10/05 10:16:46 by sjolliet         ###   ########.fr       */
+/*   Updated: 2026/10/09 11:45:01 by omiskiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@
 # include <string.h>
 # include <stdbool.h>
 
+# define WIN_WIDTH 800
+# define WIN_HEIGHT 600
+# define WIN_TITLE	"cub3d"
+
 /*
 ** ================================
 **		ENUMS & STRUCTS
@@ -37,13 +41,15 @@
 
 typedef struct s_map
 {
-	char	**grid;
-	char	*no_text;
-	char	*so_text;
-	char	*we_text;
-	char	*ea_text;
-	int		*f_color;
-	int		*c_color;
+	char			**grid;
+	char			*no_text;
+	char			*so_text;
+	char			*we_text;
+	char			*ea_text;
+	unsigned int	f_color;
+	unsigned int	c_color;
+	bool			f_color_set;
+	bool			c_color_set;
 }	t_map;
 
 typedef struct s_game
@@ -67,9 +73,14 @@ int		ft_mlx_window(t_game *game);
 bool	is_line_empty(char *line);
 void	ft_clean(t_game *game);
 bool	set_map_texture(t_map *map, char **param);
+bool	check_texture_validity(char *path);
+bool	check_valid_characters(char **grid);
+bool	check_single_player(char **grid);
 bool	set_map_color(t_map *map, char **param);
 bool	set_map_grid(t_map *map, char *line);
 bool	set_map_parameter(t_map *map, char *line);
 char	*ft_strdup_no_newline(char *str);
+int		handle_key(int keycode, t_game *game);
+unsigned int	rgb(int red, int green, int blue);
 
 #endif
