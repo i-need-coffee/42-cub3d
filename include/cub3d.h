@@ -6,7 +6,7 @@
 /*   By: omiskiny <omiskiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 12:00:55 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/10/09 11:45:01 by omiskiny         ###   ########.fr       */
+/*   Updated: 2026/10/10 14:28:45 by omiskiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	error_exit(t_game *game, char *err_location, char *err_msg);
 void	parse_map(t_game *game, char *file);
 void	ft_clean_exit(t_game *game, int code);
 void	print_error(char *err_location, char *err_msg);
+void	flood_fill(char **map, int x, int y, bool *leak);
 int		ft_mlx_window(t_game *game);
 bool	is_line_empty(char *line);
 void	ft_clean(t_game *game);
@@ -76,10 +77,12 @@ bool	set_map_texture(t_map *map, char **param);
 bool	check_texture_validity(char *path);
 bool	check_valid_characters(char **grid);
 bool	check_single_player(char **grid);
+bool	check_map_enclosure(t_map *map);
 bool	set_map_color(t_map *map, char **param);
 bool	set_map_grid(t_map *map, char *line);
 bool	set_map_parameter(t_map *map, char *line);
 char	*ft_strdup_no_newline(char *str);
+char	**copy_map_grid(char **grid);
 int		handle_key(int keycode, t_game *game);
 unsigned int	rgb(int red, int green, int blue);
 

@@ -6,7 +6,7 @@
 /*   By: omiskiny <omiskiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/01 15:53:52 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/10/09 10:39:21 by omiskiny         ###   ########.fr       */
+/*   Updated: 2026/10/10 14:22:26 by omiskiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ void	parse_map(t_game *game, char *file)
 	if (!read_map_parameters(game->map, fd)
 		|| !read_map_grid(game->map, fd)
 		|| !check_valid_characters(game->map->grid)
-		|| !check_single_player(game->map->grid))
+		|| !check_single_player(game->map->grid)
+		|| !check_map_enclosure(game->map))
 	{
 		close(fd);
 		get_next_line(-1);
