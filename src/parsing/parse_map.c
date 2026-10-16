@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omiskiny <omiskiny@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sjolliet <sjolliet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/01 15:53:52 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/10/10 14:22:26 by omiskiny         ###   ########.fr       */
+/*   Updated: 2026/10/16 16:41:19 by sjolliet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,7 @@ void	parse_map(t_game *game, char *file)
 	{
 		close(fd);
 		get_next_line(-1);
-		ft_clean(game);
-		exit(EXIT_FAILURE);
+		ft_clean_exit(game, EXIT_FAILURE);
 	}
 	close(fd);
 }
