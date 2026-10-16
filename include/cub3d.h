@@ -6,7 +6,7 @@
 /*   By: sjolliet <sjolliet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 12:00:55 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/10/16 16:39:00 by sjolliet         ###   ########.fr       */
+/*   Updated: 2026/10/16 16:59:58 by sjolliet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,6 @@ char			*ft_strdup_no_newline(char *str);
 char			**copy_map_grid(char **grid);
 int				handle_key(int keycode, t_game *game);
 unsigned int	rgb(int red, int green, int blue);
+bool			check_file(char *file, char *ext);
 
 #endif
