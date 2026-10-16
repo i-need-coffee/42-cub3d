@@ -6,7 +6,7 @@
 /*   By: sjolliet <sjolliet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/03 16:18:37 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/10/16 17:11:34 by sjolliet         ###   ########.fr       */
+/*   Updated: 2026/10/16 17:26:40 by sjolliet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ bool	check_file(char *file, char *ext)
 		|| (ft_strrchr(file, '/') && ft_strrchr(file, '/')[1] == '.'))
 		return (print_error(file, HID_FILE), false);
 	file_ext = ft_strrchr(file, '.');
-	if (!file_ext || ft_strncmp(file_ext, ext, 5) != 0)
+	if (!file_ext || ft_strcmp(file_ext, ext) != 0)
 		return (print_error(file, WRONG_EXT), false);
 	fd = open(file, O_DIRECTORY);
 	if (fd != -1)
