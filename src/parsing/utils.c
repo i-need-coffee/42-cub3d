@@ -6,7 +6,7 @@
 /*   By: sjolliet <sjolliet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/03 16:18:37 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/10/16 17:26:40 by sjolliet         ###   ########.fr       */
+/*   Updated: 2026/10/19 16:17:18 by sjolliet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,30 +70,5 @@ bool	check_texture_validity(char *path)
 	if (fd == -1)
 		return (print_error(path, strerror(errno)), false);
 	close(fd);
-	return (true);
-}
-
-bool	check_valid_characters(char **grid)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (grid[i] != NULL)
-	{
-		j = 0;
-		while (grid[i][j] != '\0')
-		{
-			if (grid[i][j] != '0' && grid[i][j] != '1' && grid[i][j] != 'W' &&
-					grid[i][j] != 'E' && grid[i][j] != 'S' &&
-						grid[i][j] != 'N' && grid[i][j] != ' ')
-			{
-				printf("Error\n Invalid character '%c' in map.\n", grid[i][j]);
-				return (false);
-			}
-			j++;
-		}
-		i++;
-	}
 	return (true);
 }

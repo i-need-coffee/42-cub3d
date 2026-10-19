@@ -6,7 +6,7 @@
 /*   By: sjolliet <sjolliet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 17:09:22 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/10/16 17:12:22 by sjolliet         ###   ########.fr       */
+/*   Updated: 2026/10/19 16:25:07 by sjolliet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@
 # define NOT_PARAM	"Parameter does not exist"
 # define DBL_PARAM	"Parameter specified more than once"
 # define ERR_GRID	"Empty lines in map grid"
+# define WRONG_CHAR	"Invalid character found in map grid"
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: sjolliet <sjolliet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/01 15:53:52 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/10/16 17:00:30 by sjolliet         ###   ########.fr       */
+/*   Updated: 2026/10/19 16:26:17 by sjolliet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static bool	read_map_parameters(t_map *map, int fd);
 static bool	read_map_grid(t_map *map, int fd);
 static bool	process_grid_line(t_map *map, char *line, bool *start_grid,
 				bool *finish_grid);
+static bool	check_valid_characters(char **grid);
 
 void	parse_map(t_game *game, char *file)
 {
@@ -102,4 +103,32 @@ static bool	process_grid_line(t_map *map, char *line, bool *start_grid,
 		return (print_error("Map", ERR_GRID), false);
 	*start_grid = true;
 	return (set_map_grid(map, line));
+}
+
+static bool	check_valid_characters(char **grid)
+{
+	int		i;
+	int		j;
+	char	str[2];
+
+	i = 0;
+	while (grid[i] != NULL)
+	{
+		j = 0;
+		while (grid[i][j] != '\0')
+		{
+			if (grid[i][j] != '0' && grid[i][j] != '1' && grid[i][j] != 'W' &&
+					grid[i][j] != 'E' && grid[i][j] != 'S' &&
+						grid[i][j] != 'N' && grid[i][j] != ' ')
+			{
+				str[0] = grid[i][j];
+				str[1] = '\0';
+				print_error(WRONG_CHAR, str);
+				return (false);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (true);
 }

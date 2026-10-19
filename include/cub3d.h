@@ -6,7 +6,7 @@
 /*   By: sjolliet <sjolliet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 12:00:55 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/10/16 16:59:58 by sjolliet         ###   ########.fr       */
+/*   Updated: 2026/10/19 16:21:54 by sjolliet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ bool			is_line_empty(char *line);
 void			ft_clean(t_game *game);
 bool			set_map_texture(t_map *map, char **param);
 bool			check_texture_validity(char *path);
-bool			check_valid_characters(char **grid);
 bool			check_single_player(char **grid);
 bool			check_map_enclosure(t_map *map);
 bool			set_map_color(t_map *map, char **param);
