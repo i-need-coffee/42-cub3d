@@ -6,7 +6,7 @@
 /*   By: sjolliet <sjolliet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/03 16:18:37 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/10/19 16:17:18 by sjolliet         ###   ########.fr       */
+/*   Updated: 2026/10/19 16:31:34 by sjolliet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,9 @@ bool	check_texture_validity(char *path)
 		return (print_error(path, strerror(errno)), false);
 	close(fd);
 	return (true);
+}
+
+unsigned int	rgb(int red, int green, int blue)
+{
+	return ((red << 16) | (green << 8) | blue);
 }
