@@ -11,3 +11,6 @@ core
 *.swp
 *~
 .DS_Store
+
+# Debug tools
+.vscode

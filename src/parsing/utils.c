@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sjolliet <sjolliet@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*   By: sjolliet <sjolliet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/03 16:18:37 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/10/05 10:18:13 by sjolliet         ###   ########.fr       */
+/*   Updated: 2026/10/19 16:31:34 by sjolliet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,42 @@ char	*ft_strdup_no_newline(char *str)
 	if (!clean_str)
 		return (NULL);
 	return (clean_str);
+}
+
+bool	check_file(char *file, char *ext)
+{
+	char	*file_ext;
+	int		fd;
+
+	if ((file[0] == '.' && file[1] != '/')
+		|| (ft_strrchr(file, '/') && ft_strrchr(file, '/')[1] == '.'))
+		return (print_error(file, HID_FILE), false);
+	file_ext = ft_strrchr(file, '.');
+	if (!file_ext || ft_strcmp(file_ext, ext) != 0)
+		return (print_error(file, WRONG_EXT), false);
+	fd = open(file, O_DIRECTORY);
+	if (fd != -1)
+	{
+		close(fd);
+		return (print_error(file, IS_DIR), false);
+	}
+	return (true);
+}
+
+bool	check_texture_validity(char *path)
+{
+	int	fd;
+
+	if (!path || !check_file(path, ".xpm"))
+		return (false);
+	fd = open(path, O_RDONLY);
+	if (fd == -1)
+		return (print_error(path, strerror(errno)), false);
+	close(fd);
+	return (true);
+}
+
+unsigned int	rgb(int red, int green, int blue)
+{
+	return ((red << 16) | (green << 8) | blue);
 }

@@ -3,26 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sjolliet <sjolliet@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*   By: sjolliet <sjolliet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/01 15:53:52 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/10/05 22:37:00 by sjolliet         ###   ########.fr       */
+/*   Updated: 2026/10/19 16:26:17 by sjolliet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	check_file(t_game *game, char *file);
 static bool	read_map_parameters(t_map *map, int fd);
 static bool	read_map_grid(t_map *map, int fd);
 static bool	process_grid_line(t_map *map, char *line, bool *start_grid,
 				bool *finish_grid);
+static bool	check_valid_characters(char **grid);
 
 void	parse_map(t_game *game, char *file)
 {
 	int		fd;
 
-	check_file(game, file);
+	if (!check_file(file, ".cub"))
+		ft_clean_exit(game, EXIT_FAILURE);
 	game->map = ft_calloc(sizeof(t_map), 1);
 	if (!game->map)
 		error_exit(game, "parse_map", ERR_ALLOC);
@@ -30,33 +31,16 @@ void	parse_map(t_game *game, char *file)
 	if (fd == -1)
 		error_exit(game, file, strerror(errno));
 	if (!read_map_parameters(game->map, fd)
-		|| !read_map_grid(game->map, fd))
+		|| !read_map_grid(game->map, fd)
+		|| !check_valid_characters(game->map->grid)
+		|| !check_single_player(game->map->grid)
+		|| !check_map_enclosure(game->map))
 	{
 		close(fd);
 		get_next_line(-1);
-		ft_clean(game);
-		exit(EXIT_FAILURE);
+		ft_clean_exit(game, EXIT_FAILURE);
 	}
 	close(fd);
-}
-
-static void	check_file(t_game *game, char *file)
-{
-	char	*ext;
-	int		fd;
-
-	if ((file[0] == '.' && file[1] != '/')
-		|| (ft_strrchr(file, '/') && ft_strrchr(file, '/')[1] == '.'))
-		error_exit(game, file, HID_FILE);
-	ext = ft_strrchr(file, '.');
-	if (!ext || ft_strncmp(ext, ".cub", 5) != 0)
-		error_exit(game, file, NOT_CUB);
-	fd = open(file, O_DIRECTORY);
-	if (fd != -1)
-	{
-		close(fd);
-		error_exit(game, file, IS_DIR);
-	}
 }
 
 static bool	read_map_parameters(t_map *map, int fd)
@@ -119,4 +103,32 @@ static bool	process_grid_line(t_map *map, char *line, bool *start_grid,
 		return (print_error("Map", ERR_GRID), false);
 	*start_grid = true;
 	return (set_map_grid(map, line));
+}
+
+static bool	check_valid_characters(char **grid)
+{
+	int		i;
+	int		j;
+	char	str[2];
+
+	i = 0;
+	while (grid[i] != NULL)
+	{
+		j = 0;
+		while (grid[i][j] != '\0')
+		{
+			if (grid[i][j] != '0' && grid[i][j] != '1' && grid[i][j] != 'W' &&
+					grid[i][j] != 'E' && grid[i][j] != 'S' &&
+						grid[i][j] != 'N' && grid[i][j] != ' ')
+			{
+				str[0] = grid[i][j];
+				str[1] = '\0';
+				print_error(WRONG_CHAR, str);
+				return (false);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (true);
 }
