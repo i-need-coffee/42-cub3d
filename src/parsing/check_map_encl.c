@@ -6,7 +6,7 @@
 /*   By: sjolliet <sjolliet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/10 12:18:33 by omiskiny          #+#    #+#             */
-/*   Updated: 2026/10/23 16:19:33 by sjolliet         ###   ########.fr       */
+/*   Updated: 2026/10/23 16:25:49 by sjolliet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ bool	check_map_enclosure(t_map *map)
 	int	y;
 
 	if (!map || !map->grid || !map->grid[0])
-		return (print_error("Map grid", WRONG_PATH), false);
+		return (print_error("Map", IS_EMPTY), false);
 	y = 0;
 	while (map->grid[y])
 	{
