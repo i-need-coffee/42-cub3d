@@ -6,7 +6,7 @@
 /*   By: omiskiny <omiskiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/23 09:45:03 by omiskiny          #+#    #+#             */
-/*   Updated: 2026/10/23 17:33:38 by omiskiny         ###   ########.fr       */
+/*   Updated: 2026/10/23 18:05:56 by omiskiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,7 @@ void	draw_background(t_game *game)
 		while (x < WIN_WIDTH)
 		{
 			if (y < WIN_HEIGHT / 2)
-			{
 				mlx_put_pixel(&game->image, x, y, game->map->c_color);
-			}
 			else
 				mlx_put_pixel(&game->image, x, y, game->map->f_color);
 			x++;
