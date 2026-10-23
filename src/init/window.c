@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omiskiny <omiskiny@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sjolliet <sjolliet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/03 15:10:57 by username          #+#    #+#             */
-/*   Updated: 2026/10/09 11:12:16 by omiskiny         ###   ########.fr       */
+/*   Updated: 2026/10/23 17:17:38 by sjolliet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	handle_key(int keycode, t_game *game)
 static int	ft_close_game(t_game *game)
 {
 	ft_clean_exit(game, 0);
-	exit(0);
 	return (0);
 }
 
