@@ -19,7 +19,6 @@ SRCS			= \
 	$(SRC_DIR)/parsing/set_map_parameter.c \
 	$(SRC_DIR)/parsing/check_map_encl.c \
 	$(SRC_DIR)/parsing/utils.c \
-	$(SRC_DIR)/parsing/utils1.c \
 	$(SRC_DIR)/parsing/set_map_color.c \
 	$(SRC_DIR)/parsing/check_single_player.c
 
