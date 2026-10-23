@@ -6,7 +6,7 @@
 /*   By: omiskiny <omiskiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 12:00:55 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/10/23 17:39:58 by omiskiny         ###   ########.fr       */
+/*   Updated: 2026/10/23 17:46:14 by omiskiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ typedef struct s_game
 ** ================================
 */
 
-bool			check_valid_characters(char **grid);
+// Parsing
 void			error_exit(t_game *game, char *err_location, char *err_msg);
 void			parse_map(t_game *game, char *file);
 void			ft_clean_exit(t_game *game, int code);
@@ -115,14 +115,14 @@ int				handle_key(int keycode, t_game *game);
 unsigned int	rgb(int red, int green, int blue);
 bool			check_file(char *file, char *ext);
 
-//init part
-int		init_image(t_game *game, t_img *image);
-void	draw_mini_map(t_game *game);
-void	init_player(t_player *player, t_map *map);
-void	mlx_put_pixel(t_img *image, int x, int y, int color);
-void    draw_background(t_game *game);
+// MLX
+int				init_image(t_game *game, t_img *image);
+void			draw_mini_map(t_game *game);
+void			init_player(t_player *player, t_map *map);
+void			mlx_put_pixel(t_img *image, int x, int y, int color);
+void			draw_background(t_game *game);
 
-//raycasting
-void    cast_rays(t_game *game);
+// Raycasting
+void			cast_rays(t_game *game);
 
 #endif
