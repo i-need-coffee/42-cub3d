@@ -6,7 +6,7 @@
 /*   By: omiskiny <omiskiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/03 15:10:57 by username          #+#    #+#             */
-/*   Updated: 2026/10/23 09:54:24 by omiskiny         ###   ########.fr       */
+/*   Updated: 2026/10/23 17:41:17 by omiskiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	handle_key(int keycode, t_game *game)
 static int	ft_close_game(t_game *game)
 {
 	ft_clean_exit(game, 0);
-	exit(0);
 	return (0);
 }
 

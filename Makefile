@@ -23,10 +23,9 @@ SRCS			= \
 	$(SRC_DIR)/parsing/set_map_parameter.c \
 	$(SRC_DIR)/parsing/check_map_encl.c \
 	$(SRC_DIR)/parsing/utils.c \
-	$(SRC_DIR)/parsing/utils1.c \
-	$(SRC_DIR)/parsing/set_map_color.c \
 	$(SRC_DIR)/raycasting/raycasting.c \
-
+	$(SRC_DIR)/parsing/set_map_color.c \
+	$(SRC_DIR)/parsing/check_single_player.c
 
 OBJ_DIR			= obj
 OBJS			= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)

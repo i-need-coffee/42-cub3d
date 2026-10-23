@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omiskiny <omiskiny@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sjolliet <sjolliet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/03 16:18:37 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/10/09 10:27:40 by omiskiny         ###   ########.fr       */
+/*   Updated: 2026/10/19 16:31:34 by sjolliet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,50 +40,40 @@ char	*ft_strdup_no_newline(char *str)
 	return (clean_str);
 }
 
+bool	check_file(char *file, char *ext)
+{
+	char	*file_ext;
+	int		fd;
+
+	if ((file[0] == '.' && file[1] != '/')
+		|| (ft_strrchr(file, '/') && ft_strrchr(file, '/')[1] == '.'))
+		return (print_error(file, HID_FILE), false);
+	file_ext = ft_strrchr(file, '.');
+	if (!file_ext || ft_strcmp(file_ext, ext) != 0)
+		return (print_error(file, WRONG_EXT), false);
+	fd = open(file, O_DIRECTORY);
+	if (fd != -1)
+	{
+		close(fd);
+		return (print_error(file, IS_DIR), false);
+	}
+	return (true);
+}
+
 bool	check_texture_validity(char *path)
 {
 	int	fd;
-	int	len;
 
-	if (!path)
+	if (!path || !check_file(path, ".xpm"))
 		return (false);
-	len = ft_strlen(path);
-	if (len < 4 || ft_strncmp(path + (len - 4), ".xpm", 4) != 0)
-	{
-		printf("Error!\n Invalid extension in path: '%s'\n", path);
-		return (false);
-	}
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
-	{
-		printf("Error!\n File can't open\n");
-		return (false);
-	}
+		return (print_error(path, strerror(errno)), false);
 	close(fd);
 	return (true);
 }
 
-bool	check_valid_characters(char **grid)
+unsigned int	rgb(int red, int green, int blue)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	while (grid[i] != NULL)
-	{
-		j = 0;
-		while (grid[i][j] != '\0')
-		{
-			if (grid[i][j] != '0' && grid[i][j] != '1' && grid[i][j] != 'W' &&
-					grid[i][j] != 'E' && grid[i][j] != 'S' &&
-						grid[i][j] != 'N' && grid[i][j] != ' ')
-			{
-				printf("Error\n Invalid character '%c' in map.\n", grid[i][j]);
-				return (false);
-			}
-			j++;
-		}
-		i++;
-	}
-	return (true);
+	return ((red << 16) | (green << 8) | blue);
 }
