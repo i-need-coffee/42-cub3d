@@ -6,7 +6,7 @@
 /*   By: omiskiny <omiskiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 12:00:55 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/10/10 14:28:45 by omiskiny         ###   ########.fr       */
+/*   Updated: 2026/10/23 17:34:18 by omiskiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,10 @@
 # include <string.h>
 # include <stdbool.h>
 
-# define WIN_WIDTH 800
-# define WIN_HEIGHT 600
+# define WIN_WIDTH 1200
+# define WIN_HEIGHT 800
 # define WIN_TITLE	"cub3d"
+# define TILE_SIZE	10
 
 /*
 ** ================================
@@ -52,11 +53,40 @@ typedef struct s_map
 	bool			c_color_set;
 }	t_map;
 
+typedef struct s_img
+{
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		line_length;
+	int		endian;
+}	t_img;
+
+typedef struct s_player
+{
+	double	x;
+	double	y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
+}	t_player;
+
+typedef struct s_rays
+{
+	double	ray_dir_x;
+	double	ray_dir_y;
+	double	camera_x;
+}	t_rays;
+
 typedef struct s_game
 {
-	void	*mlx;
-	void	*mlx_win;
-	t_map	*map;
+	void		*mlx;
+	void		*mlx_win;
+	t_map		*map;
+	t_img		image;
+	t_player	player;
+	t_rays		rays;
 }	t_game;
 
 /*
@@ -83,7 +113,17 @@ bool	set_map_grid(t_map *map, char *line);
 bool	set_map_parameter(t_map *map, char *line);
 char	*ft_strdup_no_newline(char *str);
 char	**copy_map_grid(char **grid);
-int		handle_key(int keycode, t_game *game);
+int	handle_key(int keycode, t_game *game);
 unsigned int	rgb(int red, int green, int blue);
+
+//init part
+int		init_image(t_game *game, t_img *image);
+void	draw_mini_map(t_game *game);
+void	init_player(t_player *player, t_map *map);
+void	mlx_put_pixel(t_img *image, int x, int y, int color);
+void    draw_background(t_game *game);
+
+//raycasting
+void    cast_rays(t_game *game);
 
 #endif

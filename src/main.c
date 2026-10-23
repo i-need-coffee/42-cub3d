@@ -6,7 +6,7 @@
 /*   By: omiskiny <omiskiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 15:37:44 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/10/06 10:17:48 by omiskiny         ###   ########.fr       */
+/*   Updated: 2026/10/21 11:29:31 by omiskiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	main(int argc, char **argv)
 	if (!game)
 		error_exit(NULL, "game creation", ERR_ALLOC);
 	parse_map(game, argv[1]);
+	init_player(&game->player, game->map);
 	ft_mlx_window(game);
 	mlx_loop(game->mlx);
 	return (EXIT_SUCCESS);
