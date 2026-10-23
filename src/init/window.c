@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sjolliet <sjolliet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: omiskiny <omiskiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/03 15:10:57 by username          #+#    #+#             */
-/*   Updated: 2026/10/23 17:17:38 by sjolliet         ###   ########.fr       */
+/*   Updated: 2026/10/23 17:41:17 by omiskiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ int	ft_mlx_window(t_game *game)
 	game->mlx_win = mlx_new_window(game->mlx, WIN_WIDTH, WIN_HEIGHT, WIN_TITLE);
 	if (game->mlx_win == NULL)
 		error_exit(game, "mlx", MLX_WIN);
+	init_image(game, &game->image);
+	draw_background(game);
+	draw_mini_map(game);
+	mlx_put_image_to_window(game->mlx, game->mlx_win, game->image.img, 0, 0);
 	mlx_hook(game->mlx_win, KeyPress, KeyPressMask, handle_key, game);
 	mlx_hook(game->mlx_win, DestroyNotify, ButtonPressMask,
 		ft_close_game, game);

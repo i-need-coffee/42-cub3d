@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sjolliet <sjolliet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: omiskiny <omiskiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 12:00:55 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/10/19 16:37:37 by sjolliet         ###   ########.fr       */
+/*   Updated: 2026/10/23 17:46:14 by omiskiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,10 @@
 # include <string.h>
 # include <stdbool.h>
 
-# define WIN_WIDTH 800
-# define WIN_HEIGHT 600
+# define WIN_WIDTH 1200
+# define WIN_HEIGHT 800
 # define WIN_TITLE	"cub3d"
+# define TILE_SIZE	10
 
 /*
 ** ================================
@@ -52,11 +53,40 @@ typedef struct s_map
 	bool			c_color_set;
 }	t_map;
 
+typedef struct s_img
+{
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		line_length;
+	int		endian;
+}	t_img;
+
+typedef struct s_player
+{
+	double	x;
+	double	y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
+}	t_player;
+
+typedef struct s_rays
+{
+	double	ray_dir_x;
+	double	ray_dir_y;
+	double	camera_x;
+}	t_rays;
+
 typedef struct s_game
 {
-	void	*mlx;
-	void	*mlx_win;
-	t_map	*map;
+	void		*mlx;
+	void		*mlx_win;
+	t_map		*map;
+	t_img		image;
+	t_player	player;
+	t_rays		rays;
 }	t_game;
 
 /*
@@ -65,6 +95,7 @@ typedef struct s_game
 ** ================================
 */
 
+// Parsing
 void			error_exit(t_game *game, char *err_location, char *err_msg);
 void			parse_map(t_game *game, char *file);
 void			ft_clean_exit(t_game *game, int code);
@@ -83,5 +114,15 @@ char			*ft_strdup_no_newline(char *str);
 int				handle_key(int keycode, t_game *game);
 unsigned int	rgb(int red, int green, int blue);
 bool			check_file(char *file, char *ext);
+
+// MLX
+int				init_image(t_game *game, t_img *image);
+void			draw_mini_map(t_game *game);
+void			init_player(t_player *player, t_map *map);
+void			mlx_put_pixel(t_img *image, int x, int y, int color);
+void			draw_background(t_game *game);
+
+// Raycasting
+void			cast_rays(t_game *game);
 
 #endif
