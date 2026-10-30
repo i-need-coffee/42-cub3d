@@ -1,10 +1,10 @@
-NO ./textures/north.xpm
-SO ./textures/south.xpm
-WE ./textures/west.xpm
-EA ./textures/east.xpm
+NO ./textures/jungle_rock.xpm
+SO ./textures/concrete_vines.xpm
+WE ./textures/mossy_bricks.xpm
+EA ./textures/electric_fence.xpm
 
-F 220,100,0
-C 225,30,0
+F 45,55,35
+C 25,40,35
 
         1111111111111111111111111
         1000000000110000000000001
