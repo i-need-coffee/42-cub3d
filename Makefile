@@ -5,7 +5,7 @@
 NAME			= cub3d
 
 CC				= cc
-CFLAGS			= -Wall -Wextra -Werror -g -Iinclude -Ilibft/include -I$(MLX_DIR)
+CFLAGS			= -Wall -Wextra -Werror -g -std=gnu17 -Iinclude -Ilibft/include -I$(MLX_DIR)
 
 SRC_DIR			= src
 SRCS			= \
