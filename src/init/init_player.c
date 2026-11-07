@@ -6,7 +6,7 @@
 /*   By: omiskiny <omiskiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/21 10:34:38 by omiskiny          #+#    #+#             */
-/*   Updated: 2026/10/23 17:33:01 by omiskiny         ###   ########.fr       */
+/*   Updated: 2026/11/07 13:24:52 by omiskiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,17 +55,17 @@ static void	set_player_direction2(t_player *player, char direction)
 {
 	if (direction == 'E')
 	{
-		player->dir_x = 0;
-		player->dir_y = 1;
-		player->plane_x = 0.66;
-		player->plane_y = 0;
+		player->dir_x = 1.0;
+		player->dir_y = 0.0;
+		player->plane_x = 0.0;
+		player->plane_y = 0.66;
 	}
 	else if (direction == 'W')
 	{
-		player->dir_x = 0;
-		player->dir_y = -1;
-		player->plane_x = -0.66;
-		player->plane_y = 0;
+		player->dir_x = -1.0;
+		player->dir_y = 0.0;
+		player->plane_x = 0.0;
+		player->plane_y = -0.66;
 	}
 }
 
@@ -73,17 +73,17 @@ static void	set_player_direction(t_player *player, char direction)
 {
 	if (direction == 'N')
 	{
-		player->dir_x = -1;
-		player->dir_y = 0;
-		player->plane_x = 0;
-		player->plane_y = 0.66;
+		player->dir_x = 0.0;
+		player->dir_y = -1.0;
+		player->plane_x = 0.66;
+		player->plane_y = 0.0;
 	}
 	else if (direction == 'S')
 	{
-		player->dir_x = 1;
-		player->dir_y = 0;
-		player->plane_x = 0;
-		player->plane_y = -0.66;
+		player->dir_x = 0.0;
+		player->dir_y = 1.0;
+		player->plane_x = -0.66;
+		player->plane_y = 0.0;
 	}
 	set_player_direction2(player, direction);
 }
