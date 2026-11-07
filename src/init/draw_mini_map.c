@@ -6,13 +6,13 @@
 /*   By: omiskiny <omiskiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/19 14:41:52 by omiskiny          #+#    #+#             */
-/*   Updated: 2026/10/23 09:56:03 by omiskiny         ###   ########.fr       */
+/*   Updated: 2026/11/07 12:46:02 by omiskiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	mlx_put_pixel(t_img *image, int x, int y, int color)
+void	my_mlx_put_pixel(t_img *image, int x, int y, int color)
 {
 	char	*dst;
 
@@ -34,7 +34,7 @@ static void	draw_square(t_img *img, int x, int y, int color)
 		dx = 0;
 		while (dx < 10)
 		{
-			mlx_put_pixel(img, x + dx, y + dy, color);
+			my_mlx_put_pixel(img, x + dx, y + dy, color);
 			dx++;
 		}
 		dy++;
