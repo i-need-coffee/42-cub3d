@@ -6,7 +6,7 @@
 /*   By: omiskiny <omiskiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 12:00:55 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/10/23 17:46:14 by omiskiny         ###   ########.fr       */
+/*   Updated: 2026/11/07 14:56:16 by omiskiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # include <errno.h>
 # include <string.h>
 # include <stdbool.h>
+# include <math.h>
 
 # define WIN_WIDTH 1200
 # define WIN_HEIGHT 800
@@ -77,6 +78,21 @@ typedef struct s_rays
 	double	ray_dir_x;
 	double	ray_dir_y;
 	double	camera_x;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	double	perpwalldist;
+	double	wall_x;
+	int		map_cor_x;
+	int		map_cor_y;
+	int		step_x;
+	int		step_y;
+	int		hit_ray;
+	int		side;
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
 }	t_rays;
 
 typedef struct s_game
@@ -119,10 +135,10 @@ bool			check_file(char *file, char *ext);
 int				init_image(t_game *game, t_img *image);
 void			draw_mini_map(t_game *game);
 void			init_player(t_player *player, t_map *map);
-void			mlx_put_pixel(t_img *image, int x, int y, int color);
-void			draw_background(t_game *game);
+void			my_mlx_put_pixel(t_img *image, int x, int y, int color);
 
 // Raycasting
 void			cast_rays(t_game *game);
+void			draw_wall_line(t_game *game, int x);
 
 #endif
