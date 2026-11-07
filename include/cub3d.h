@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omiskiny <omiskiny@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sjolliet <sjolliet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 12:00:55 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/11/07 14:56:16 by omiskiny         ###   ########.fr       */
+/*   Updated: 2026/11/07 17:12:40 by sjolliet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,12 @@ typedef struct s_game
 	t_img		image;
 	t_player	player;
 	t_rays		rays;
+	bool		w_key;
+	bool		a_key;
+	bool		s_key;
+	bool		d_key;
+	bool		left_key;
+	bool		right_key;
 }	t_game;
 
 /*
