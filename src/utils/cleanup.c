@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omiskiny <omiskiny@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sjolliet <sjolliet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/03 12:37:20 by username          #+#    #+#             */
-/*   Updated: 2026/10/09 11:54:19 by omiskiny         ###   ########.fr       */
+/*   Updated: 2026/11/10 14:36:17 by sjolliet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	ft_clean(t_game *game)
 {
 	if (game != NULL)
 	{
+		if (game->mlx != NULL && game->image.img != NULL)
+			image_destroy(game, &game->image);
 		if (game->mlx_win != NULL)
 			mlx_destroy_window(game->mlx, game->mlx_win);
 		if (game->mlx != NULL)

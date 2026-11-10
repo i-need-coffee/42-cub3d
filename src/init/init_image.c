@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   init_image.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omiskiny <omiskiny@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sjolliet <sjolliet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/16 16:48:05 by omiskiny          #+#    #+#             */
-/*   Updated: 2026/10/21 12:55:08 by omiskiny         ###   ########.fr       */
+/*   Updated: 2026/11/10 14:38:31 by sjolliet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	image_destroy(t_game *game, t_img *image)
+void	image_destroy(t_game *game, t_img *image)
 {
 	if (image->img)
 	{
-		mlx_destroy_image(game, image);
+		mlx_destroy_image(game->mlx, image->img);
 		image->img = NULL;
 	}
 	image->addr = NULL;

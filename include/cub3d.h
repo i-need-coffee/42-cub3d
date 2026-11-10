@@ -6,7 +6,7 @@
 /*   By: sjolliet <sjolliet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 12:00:55 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/11/10 11:52:09 by sjolliet         ###   ########.fr       */
+/*   Updated: 2026/11/10 14:36:08 by sjolliet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,5 +146,6 @@ void			draw_wall_line(t_game *game, int x);
 int				key_press(int keycode, t_game *game);
 int				ft_close_game(t_game *game);
 int				game_loop(t_game *game);
+void			image_destroy(t_game *game, t_img *image);
 
 #endif
