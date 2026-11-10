@@ -6,7 +6,7 @@
 /*   By: sjolliet <sjolliet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 12:00:55 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/11/07 17:12:40 by sjolliet         ###   ########.fr       */
+/*   Updated: 2026/11/10 11:52:09 by sjolliet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@
 # define WIN_HEIGHT 800
 # define WIN_TITLE	"cub3d"
 # define TILE_SIZE	10
+# define MOVE_SPEED	0.05
+# define ROT_SPEED	0.04
 
 /*
 ** ================================
@@ -117,7 +119,6 @@ typedef struct s_game
 ** ================================
 */
 
-// Parsing
 void			error_exit(t_game *game, char *err_location, char *err_msg);
 void			parse_map(t_game *game, char *file);
 void			ft_clean_exit(t_game *game, int code);
@@ -133,18 +134,17 @@ bool			set_map_color(t_map *map, char **param);
 bool			set_map_grid(t_map *map, char *line);
 bool			set_map_parameter(t_map *map, char *line);
 char			*ft_strdup_no_newline(char *str);
-int				handle_key(int keycode, t_game *game);
 unsigned int	rgb(int red, int green, int blue);
 bool			check_file(char *file, char *ext);
-
-// MLX
 int				init_image(t_game *game, t_img *image);
 void			draw_mini_map(t_game *game);
 void			init_player(t_player *player, t_map *map);
 void			my_mlx_put_pixel(t_img *image, int x, int y, int color);
-
-// Raycasting
+int				key_release(int keycode, t_game *game);
 void			cast_rays(t_game *game);
 void			draw_wall_line(t_game *game, int x);
+int				key_press(int keycode, t_game *game);
+int				ft_close_game(t_game *game);
+int				game_loop(t_game *game);
 
 #endif
