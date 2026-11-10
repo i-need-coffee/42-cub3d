@@ -26,7 +26,8 @@ SRCS			= \
 	$(SRC_DIR)/raycasting/render.c \
 	$(SRC_DIR)/parsing/set_map_color.c \
 	$(SRC_DIR)/parsing/check_single_player.c \
-	$(SRC_DIR)/init/events.c
+	$(SRC_DIR)/init/events.c \
+	$(SRC_DIR)/movements/player.c
 
 OBJ_DIR			= obj
 OBJS			= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
