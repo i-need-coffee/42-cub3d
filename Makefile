@@ -24,6 +24,8 @@ SRCS			= \
 	$(SRC_DIR)/parsing/utils.c \
 	$(SRC_DIR)/raycasting/raycasting.c \
 	$(SRC_DIR)/raycasting/render.c \
+	$(SRC_DIR)/raycasting/utils.c \
+	$(SRC_DIR)/raycasting/md_texture.c \
 	$(SRC_DIR)/parsing/set_map_color.c \
 	$(SRC_DIR)/parsing/check_single_player.c 
 

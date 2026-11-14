@@ -6,7 +6,7 @@
 /*   By: omiskiny <omiskiny@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 12:00:55 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/11/07 14:56:16 by omiskiny         ###   ########.fr       */
+/*   Updated: 2026/11/11 13:08:22 by omiskiny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@
 # define WIN_WIDTH 1200
 # define WIN_HEIGHT 800
 # define WIN_TITLE	"cub3d"
-# define TILE_SIZE	10
 
 /*
 ** ================================
@@ -62,6 +61,25 @@ typedef struct s_img
 	int		line_length;
 	int		endian;
 }	t_img;
+
+typedef struct s_textinfo
+{
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		line_length;
+	int		endian;
+	int		height;
+	int		width;
+}	t_textinfo;
+
+typedef struct s_texture
+{
+	t_textinfo	north;
+	t_textinfo	south;
+	t_textinfo	west;
+	t_textinfo	east;
+}	t_texture;
 
 typedef struct s_player
 {
@@ -103,6 +121,8 @@ typedef struct s_game
 	t_img		image;
 	t_player	player;
 	t_rays		rays;
+	t_texture	texture;
+	t_textinfo	text_info;
 }	t_game;
 
 /*
@@ -139,6 +159,8 @@ void			my_mlx_put_pixel(t_img *image, int x, int y, int color);
 
 // Raycasting
 void			cast_rays(t_game *game);
+unsigned int	get_pixel_from_image(t_textinfo *text, int x, int y);
+bool			load_all_texture(t_game *game, t_texture *text);
 void			draw_wall_line(t_game *game, int x);
 
 #endif
