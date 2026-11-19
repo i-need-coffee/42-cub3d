@@ -6,7 +6,7 @@
 /*   By: sjolliet <sjolliet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/10 11:36:48 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/11/10 16:54:16 by sjolliet         ###   ########.fr       */
+/*   Updated: 2026/11/19 17:17:03 by sjolliet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,3 @@ int	game_loop(t_game *game)
 	mlx_put_image_to_window(game->mlx, game->mlx_win, game->image.img, 0, 0);
 	return (0);
 }
-
