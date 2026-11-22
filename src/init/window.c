@@ -6,7 +6,7 @@
 /*   By: sjolliet <sjolliet@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/03 15:10:57 by username          #+#    #+#             */
-/*   Updated: 2026/11/22 02:29:38 by sjolliet         ###   ########.fr       */
+/*   Updated: 2026/11/22 03:10:06 by sjolliet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ int	ft_mlx_window(t_game *game)
 		error_exit(game, "mlx", MLX_WIN);
 	if (load_all_texture(game, &game->texture) == false)
 		error_exit(game, "Texture", WRONG_XPM);
-	init_image(game, &game->image);
+	if (!init_image(game, &game->image)
+		error_exit(game, "mlx", MLX_IMG);
 	mlx_hook(game->mlx_win, DestroyNotify, ButtonPressMask,
 		ft_close_game, game);
 	mlx_hook(game->mlx_win, KeyPress, KeyPressMask, key_press, game);
