@@ -6,7 +6,7 @@
 /*   By: sjolliet <sjolliet@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 12:00:55 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/11/20 13:29:22 by sjolliet         ###   ########.fr       */
+/*   Updated: 2026/11/22 02:30:34 by sjolliet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@
 # define WIN_WIDTH 1200
 # define WIN_HEIGHT 800
 # define WIN_TITLE	"cub3d"
-# define TILE_SIZE	10
 # define MOVE_SPEED	0.05
 # define ROT_SPEED	0.04
 
@@ -64,6 +63,25 @@ typedef struct s_img
 	int		line_length;
 	int		endian;
 }	t_img;
+
+typedef struct s_textinfo
+{
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		line_length;
+	int		endian;
+	int		height;
+	int		width;
+}	t_textinfo;
+
+typedef struct s_texture
+{
+	t_textinfo	north;
+	t_textinfo	south;
+	t_textinfo	west;
+	t_textinfo	east;
+}	t_texture;
 
 typedef struct s_player
 {
@@ -111,6 +129,8 @@ typedef struct s_game
 	bool		d_key;
 	bool		left_key;
 	bool		right_key;
+	t_texture	texture;
+	t_textinfo	text_info;
 }	t_game;
 
 /*
@@ -142,6 +162,8 @@ void			init_player(t_player *player, t_map *map);
 void			my_mlx_put_pixel(t_img *image, int x, int y, int color);
 int				key_release(int keycode, t_game *game);
 void			cast_rays(t_game *game);
+unsigned int	get_pixel_from_image(t_textinfo *text, int x, int y);
+bool			load_all_texture(t_game *game, t_texture *text);
 void			draw_wall_line(t_game *game, int x);
 int				key_press(int keycode, t_game *game);
 int				ft_close_game(t_game *game);

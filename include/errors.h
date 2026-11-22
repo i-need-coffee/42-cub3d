@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sjolliet <sjolliet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sjolliet <sjolliet@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 17:09:22 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/10/23 16:15:31 by sjolliet         ###   ########.fr       */
+/*   Updated: 2026/11/22 02:29:00 by sjolliet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@
 # define WRONG_CHAR	"Invalid character found in map grid"
 # define INV_PLAYER	"Number of players is incorrect"
 # define WRONG_PATH	"Not entirely enclosed by walls or has spaces within walls"
+# define WRONG_XPM	"Failed to load .xpm files"
 
 #endif
