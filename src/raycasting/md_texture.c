@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   md_texture.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omiskiny <omiskiny@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sjolliet <sjolliet@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/07 10:50:09 by omiskiny          #+#    #+#             */
-/*   Updated: 2026/11/11 11:41:30 by omiskiny         ###   ########.fr       */
+/*   Updated: 2026/11/22 02:41:58 by sjolliet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static bool	load_single_texture(t_game *game, t_textinfo *text, char *path)
 	return (true);
 }
 
-static void	destroy_all_texture(t_game *game, t_texture *text)
+void	destroy_all_texture(t_game *game, t_texture *text)
 {
 	if (text->north.img != NULL)
 		mlx_destroy_image(game->mlx, text->north.img);

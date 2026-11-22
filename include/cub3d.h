@@ -6,7 +6,7 @@
 /*   By: sjolliet <sjolliet@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 12:00:55 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/11/22 02:30:34 by sjolliet         ###   ########.fr       */
+/*   Updated: 2026/11/22 02:42:11 by sjolliet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,5 +174,6 @@ void			move_down(t_player *player, char **map);
 void			move_left(t_player *player, char **map);
 void			move_right(t_player *player, char **map);
 void			rotate(t_player *player, double rot_speed);
+void			destroy_all_texture(t_game *game, t_texture *text);
 
 #endif
