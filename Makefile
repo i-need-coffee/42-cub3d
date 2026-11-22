@@ -15,7 +15,7 @@ SRCS			= \
 	$(SRC_DIR)/utils/error.c \
 	$(SRC_DIR)/init/window.c \
 	$(SRC_DIR)/init/init_image.c \
-	$(SRC_DIR)/init/draw_mini_map.c \
+	$(SRC_DIR)/game/draw_mini_map.c \
 	$(SRC_DIR)/init/init_player.c \
 	$(SRC_DIR)/parsing/set_map_texture.c \
 	$(SRC_DIR)/parsing/set_map_grid.c \
@@ -27,7 +27,7 @@ SRCS			= \
 	$(SRC_DIR)/parsing/set_map_color.c \
 	$(SRC_DIR)/parsing/check_single_player.c \
 	$(SRC_DIR)/init/events.c \
-	$(SRC_DIR)/movements/player.c
+	$(SRC_DIR)/game/movements.c
 
 OBJ_DIR			= obj
 OBJS			= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)

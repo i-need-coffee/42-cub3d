@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sjolliet <sjolliet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sjolliet <sjolliet@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 12:00:55 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/11/10 16:51:17 by sjolliet         ###   ########.fr       */
+/*   Updated: 2026/11/20 13:29:22 by sjolliet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,10 @@ int				key_press(int keycode, t_game *game);
 int				ft_close_game(t_game *game);
 int				game_loop(t_game *game);
 void			image_destroy(t_game *game, t_img *image);
-void			update_player(t_game *game);
+void			move_up(t_player *player, char **map);
+void			move_down(t_player *player, char **map);
+void			move_left(t_player *player, char **map);
+void			move_right(t_player *player, char **map);
+void			rotate(t_player *player, double rot_speed);
 
 #endif
