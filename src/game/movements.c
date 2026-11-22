@@ -77,5 +77,6 @@ void	rotate(t_player *player, double rot_speed)
 	old_plane_x = player->plane_x;
 	player->plane_x = player->plane_x * cos(rot_speed)
 		- player->plane_y * sin(rot_speed);
-	player->plane_y = old_plane_x * sin(rot_speed);
+	player->plane_y = old_plane_x * sin(rot_speed)
+		+ player->plane_y * cos(rot_speed);
 }
