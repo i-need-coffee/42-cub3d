@@ -1,10 +1,18 @@
 NO ./textures/jungle_rock.xpm
-SO ./textures/dinosaur_fossil.xpm
+SO           ./textures/dinosaur_fossil.xpm
+
+
 WE ./textures/concrete_moss.xpm
 EA ./textures/mossy_bricks.xpm
 
+
+
 F 220,100,0
 C 225,30,0
+
+
+
+
 
 111111
 100001
