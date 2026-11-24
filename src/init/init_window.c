@@ -1,29 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   window.c                                           :+:      :+:    :+:   */
+/*   init_window.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omiskiny <omiskiny@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sjolliet <sjolliet@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/03 15:10:57 by username          #+#    #+#             */
-/*   Updated: 2026/11/07 15:27:19 by omiskiny         ###   ########.fr       */
+/*   Updated: 2026/11/22 03:28:53 by sjolliet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-int	handle_key(int keycode, t_game *game)
-{
-	if (keycode == XK_Escape)
-		ft_clean_exit(game, 0);
-	return (0);
-}
-
-static int	ft_close_game(t_game *game)
-{
-	ft_clean_exit(game, 0);
-	return (0);
-}
 
 int	ft_mlx_window(t_game *game)
 {
@@ -33,12 +20,14 @@ int	ft_mlx_window(t_game *game)
 	game->mlx_win = mlx_new_window(game->mlx, WIN_WIDTH, WIN_HEIGHT, WIN_TITLE);
 	if (game->mlx_win == NULL)
 		error_exit(game, "mlx", MLX_WIN);
-	init_image(game, &game->image);
-	cast_rays(game);
-	draw_mini_map(game);
-	mlx_put_image_to_window(game->mlx, game->mlx_win, game->image.img, 0, 0);
-	mlx_hook(game->mlx_win, KeyPress, KeyPressMask, handle_key, game);
+	if (load_all_texture(game, &game->texture) == false)
+		error_exit(game, "Texture", WRONG_XPM);
+	if (!init_image(game, &game->image))
+		error_exit(game, "mlx", MLX_IMG);
 	mlx_hook(game->mlx_win, DestroyNotify, ButtonPressMask,
 		ft_close_game, game);
+	mlx_hook(game->mlx_win, KeyPress, KeyPressMask, key_press, game);
+	mlx_hook(game->mlx_win, KeyRelease, KeyReleaseMask, key_release, game);
+	mlx_loop_hook(game->mlx, game_loop, game);
 	return (0);
 }

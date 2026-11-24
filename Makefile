@@ -13,19 +13,24 @@ SRCS			= \
 	$(SRC_DIR)/parsing/parse_map.c \
 	$(SRC_DIR)/utils/cleanup.c \
 	$(SRC_DIR)/utils/error.c \
-	$(SRC_DIR)/init/window.c \
-	$(SRC_DIR)/init/init_image.c \
-	$(SRC_DIR)/init/draw_mini_map.c \
+	$(SRC_DIR)/init/init_window.c \
+	$(SRC_DIR)/render/draw_mini_map.c \
 	$(SRC_DIR)/init/init_player.c \
 	$(SRC_DIR)/parsing/set_map_texture.c \
 	$(SRC_DIR)/parsing/set_map_grid.c \
 	$(SRC_DIR)/parsing/set_map_parameter.c \
-	$(SRC_DIR)/parsing/check_map_encl.c \
+	$(SRC_DIR)/parsing/check_map_enclosure.c \
 	$(SRC_DIR)/parsing/utils.c \
-	$(SRC_DIR)/raycasting/raycasting.c \
-	$(SRC_DIR)/raycasting/render.c \
+	$(SRC_DIR)/render/raycasting.c \
+	$(SRC_DIR)/render/render.c \
+	$(SRC_DIR)/render/utils.c \
+	$(SRC_DIR)/render/md_texture.c \
 	$(SRC_DIR)/parsing/set_map_color.c \
-	$(SRC_DIR)/parsing/check_single_player.c 
+	$(SRC_DIR)/parsing/check_single_player.c \
+	$(SRC_DIR)/game/key_events.c \
+	$(SRC_DIR)/game/movements.c \
+	$(SRC_DIR)/render/image.c \
+	$(SRC_DIR)/game/game_loop.c
 
 OBJ_DIR			= obj
 OBJS			= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)

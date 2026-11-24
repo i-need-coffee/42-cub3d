@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omiskiny <omiskiny@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sjolliet <sjolliet@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 12:00:55 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/11/07 14:56:16 by omiskiny         ###   ########.fr       */
+/*   Updated: 2026/11/22 02:42:11 by sjolliet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@
 # define WIN_WIDTH 1200
 # define WIN_HEIGHT 800
 # define WIN_TITLE	"cub3d"
-# define TILE_SIZE	10
+# define MOVE_SPEED	0.05
+# define ROT_SPEED	0.04
 
 /*
 ** ================================
@@ -62,6 +63,25 @@ typedef struct s_img
 	int		line_length;
 	int		endian;
 }	t_img;
+
+typedef struct s_textinfo
+{
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		line_length;
+	int		endian;
+	int		height;
+	int		width;
+}	t_textinfo;
+
+typedef struct s_texture
+{
+	t_textinfo	north;
+	t_textinfo	south;
+	t_textinfo	west;
+	t_textinfo	east;
+}	t_texture;
 
 typedef struct s_player
 {
@@ -103,6 +123,14 @@ typedef struct s_game
 	t_img		image;
 	t_player	player;
 	t_rays		rays;
+	bool		w_key;
+	bool		a_key;
+	bool		s_key;
+	bool		d_key;
+	bool		left_key;
+	bool		right_key;
+	t_texture	texture;
+	t_textinfo	text_info;
 }	t_game;
 
 /*
@@ -111,7 +139,6 @@ typedef struct s_game
 ** ================================
 */
 
-// Parsing
 void			error_exit(t_game *game, char *err_location, char *err_msg);
 void			parse_map(t_game *game, char *file);
 void			ft_clean_exit(t_game *game, int code);
@@ -127,18 +154,26 @@ bool			set_map_color(t_map *map, char **param);
 bool			set_map_grid(t_map *map, char *line);
 bool			set_map_parameter(t_map *map, char *line);
 char			*ft_strdup_no_newline(char *str);
-int				handle_key(int keycode, t_game *game);
 unsigned int	rgb(int red, int green, int blue);
 bool			check_file(char *file, char *ext);
-
-// MLX
 int				init_image(t_game *game, t_img *image);
 void			draw_mini_map(t_game *game);
 void			init_player(t_player *player, t_map *map);
 void			my_mlx_put_pixel(t_img *image, int x, int y, int color);
-
-// Raycasting
+int				key_release(int keycode, t_game *game);
 void			cast_rays(t_game *game);
+unsigned int	get_pixel_from_image(t_textinfo *text, int x, int y);
+bool			load_all_texture(t_game *game, t_texture *text);
 void			draw_wall_line(t_game *game, int x);
+int				key_press(int keycode, t_game *game);
+int				ft_close_game(t_game *game);
+int				game_loop(t_game *game);
+void			image_destroy(t_game *game, t_img *image);
+void			move_up(t_player *player, char **map);
+void			move_down(t_player *player, char **map);
+void			move_left(t_player *player, char **map);
+void			move_right(t_player *player, char **map);
+void			rotate(t_player *player, double rot_speed);
+void			destroy_all_texture(t_game *game, t_texture *text);
 
 #endif
