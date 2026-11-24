@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sjolliet <sjolliet@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*   By: sjolliet <sjolliet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 17:09:22 by sjolliet          #+#    #+#             */
-/*   Updated: 2026/11/22 03:07:52 by sjolliet         ###   ########.fr       */
+/*   Updated: 2026/11/24 14:53:26 by sjolliet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # define HID_FILE	"Parameter passed is an hidden file"
 # define WRONG_EXT	"Incorrect or missing file extension"
 # define IS_DIR		"Is a directory"
-# define IS_EMPTY	"Map is empty"
+# define IS_EMPTY	"Is empty"
 # define MLX_INIT	"mlx_init failed"
 # define MLX_WIN	"Window creation failed"
 # define WRG_PARAM	"Parameter is not formatted correctly"
@@ -30,5 +30,6 @@
 # define WRONG_PATH	"Not entirely enclosed by walls or has spaces within walls"
 # define WRONG_XPM	"Failed to load .xpm files"
 # define MLX_IMG	"Image creation failed"
+# define MIS_PARAM	"One or more parameters are missing"
 
 #endif
